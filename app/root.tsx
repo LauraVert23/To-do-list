@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import ListaTarefas from "./components/ListaTarefas";
 import AdicionarTarefa from "./components/AdicionarTarefa";
+import TiposLista from "./components/TiposLista";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,9 +45,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </header>
         <main className="pt-14 container mx-auto">
           <div>
+            <TiposLista />
+          </div>
+          <div>
             <ListaTarefas />
           </div>
-          <div className="flex justify-center">
+          <div className="flex  mr-2 ">
             <AdicionarTarefa />
           </div>
         </main>
