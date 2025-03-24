@@ -47,12 +47,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div>
             <TiposLista />
           </div>
-          <div>
-            <ListaTarefas />
-          </div>
-          <div className="flex  mr-2 ">
-            <AdicionarTarefa />
-          </div>
         </main>
 
         {children}

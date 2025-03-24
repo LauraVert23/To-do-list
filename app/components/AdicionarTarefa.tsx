@@ -9,9 +9,11 @@ function AdicionarTarefa() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tarefas, setTarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
+
   const adiciona = () => {
     const novaTarefa: TarefaProps = { title, description };
     setTarefas([...tarefas, novaTarefa]);
+
     setTitle("");
     setDescription("");
   };

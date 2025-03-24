@@ -6,7 +6,7 @@ interface TarefaProps {
 }
 
 function ListaTarefas() {
-  const [tarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
+  const [tarefas, setTarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
 
   return (
     <div className="flex justify-between">
@@ -16,6 +16,7 @@ function ListaTarefas() {
             key={index}
             title={tarefa.title}
             description={tarefa.description}
+            index={index}
           >
             <button
               onClick={() => alert("Tarefa Concluída")}
