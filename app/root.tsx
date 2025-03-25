@@ -48,7 +48,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <TiposLista />
           </div>
         </main>
-
         {children}
         <ScrollRestoration />
         <Scripts />

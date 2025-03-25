@@ -1,30 +1,16 @@
-import Tarefa from "./CardTarefa";
+import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
+import CardTarefa from "./CardTarefa";
 import { useLocalStorage } from "usehooks-ts";
-interface TarefaProps {
-  title: string;
-  description: string;
-}
 
 function ListaTarefas() {
-  const [tarefas, setTarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
-
+  const [tarefas] = useLocalStorage<ITarefaStorage[]>("tarefas", []);
+  const tarefasEmAndamento = tarefas.filter((tarefa) => !tarefa.estado);
+  const tarefasConcluidas = tarefas.filter((tarefa) => tarefa.estado);
   return (
     <div className="flex justify-between">
       <div className="p-4 gap-4 flex flex-col justify-center">
         {tarefas.map((tarefa, index) => (
-          <Tarefa
-            key={index}
-            title={tarefa.title}
-            description={tarefa.description}
-            index={index}
-          >
-            <button
-              onClick={() => alert("Tarefa Concluída")}
-              className=" bg-green-300 text-white p-2 rounded cursor-pointer"
-            >
-              Concluir
-            </button>
-          </Tarefa>
+          <CardTarefa key={index} data={tarefa} index={index}></CardTarefa>
         ))}
       </div>
     </div>

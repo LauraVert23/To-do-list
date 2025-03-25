@@ -1,22 +1,31 @@
-import { index } from "@react-router/dev/routes";
 import React, { useState } from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import { useLocalStorage } from "usehooks-ts";
+import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 
-interface TarefaProps {
-  title: string;
-  description: string;
+interface Props {
+  data: ITarefaStorage;
   index: number;
-  children?: React.ReactNode;
 }
 
-function CardTarefa({ title, description, index, children }: TarefaProps) {
+function CardTarefa({ data, index }: Props) {
   const [botaoExcluir, setBotaoExcluir] = useState(false);
   const [botaoEditar, setBotaoEditar] = useState(false);
-  const [tarefas, setTarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
+  const [tarefas, setTarefas] = useLocalStorage<Props[]>("tarefas", []);
 
   const excluirTarefa = (index: number) => {
     const novasTarefas = tarefas.filter((atual, i) => i !== index);
+    setTarefas(novasTarefas);
+  };
+
+  const editarTarefa = (index: number) => {};
+
+  const [concluida, setConcluida] = useState(false);
+  const estado = (index: number) => {
+    setConcluida(!concluida);
+    const novasTarefas = tarefas.map((tarefa, i) =>
+      i === index ? { ...tarefa, estado: !concluida } : tarefa
+    );
     setTarefas(novasTarefas);
   };
 
@@ -25,10 +34,12 @@ function CardTarefa({ title, description, index, children }: TarefaProps) {
       <div className="flex-grow">
         <div className="flex gap-3">
           <h2 className="text-lg font-bold text-cyan-700 dark:text-white">
-            {title}
+            {data.title}
+
             <HiDotsVertical
               onClick={() => {
-                setBotaoExcluir(!botaoExcluir), setBotaoEditar(!botaoEditar);
+                setBotaoExcluir(!botaoExcluir);
+                setBotaoEditar(!botaoEditar);
               }}
               className="inline-block ml-2 cursor-pointer"
             />
@@ -36,7 +47,7 @@ function CardTarefa({ title, description, index, children }: TarefaProps) {
           {botaoEditar && (
             <button
               className="bg-cyan-700 items-center text-red-200 rounded cursor-pointer p-1 w-[60px]"
-              onClick={() => alert("Tarefa editada")}
+              onClick={() => editarTarefa(index)}
             >
               Editar
             </button>
@@ -50,10 +61,17 @@ function CardTarefa({ title, description, index, children }: TarefaProps) {
             </button>
           )}
         </div>
-        <p className="text-gray-600 dark:text-gray-300">{description}</p>
+        <p className="text-gray-600 dark:text-gray-300">{data.description}</p>
       </div>
 
-      <div className="mt-4 flex gap-2">{children}</div>
+      <div className=" flex gap-2.5">
+        <input
+          onChange={() => estado(index)}
+          className=""
+          type="checkbox"
+        ></input>
+        <div>{concluida ? "Concluída" : ""}</div>
+      </div>
     </div>
   );
 }

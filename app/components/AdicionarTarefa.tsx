@@ -1,19 +1,23 @@
 import { useLocalStorage } from "usehooks-ts";
 import { useState } from "react";
+import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 
-interface TarefaProps {
-  title: string;
-  description: string;
-}
 function AdicionarTarefa() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [tarefas, setTarefas] = useLocalStorage<TarefaProps[]>("tarefas", []);
+  const [tarefas, setTarefas] = useLocalStorage<ITarefaStorage[]>(
+    "tarefas",
+    []
+  );
 
   const adiciona = () => {
-    const novaTarefa: TarefaProps = { title, description };
+    const novaTarefa: ITarefaStorage = {
+      id: Date.now(),
+      title,
+      description,
+      estado: false,
+    };
     setTarefas([...tarefas, novaTarefa]);
-
     setTitle("");
     setDescription("");
   };
