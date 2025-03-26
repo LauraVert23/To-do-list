@@ -1,5 +1,6 @@
+import TiposLista from "~/components/TiposLista";
 import type { Route } from "./+types/home";
-import ListaTarefas from "~/components/ListaTarefas";
+import ContadorTarefas from "~/components/ContadorTarefas";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <></>;
+  return (
+    <div>
+      <div className="pt-7 container mx-auto">
+        <TiposLista />
+      </div>
+      <ContadorTarefas />
+    </div>
+  );
 }

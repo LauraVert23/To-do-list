@@ -9,9 +9,6 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import ListaTarefas from "./components/ListaTarefas";
-import AdicionarTarefa from "./components/AdicionarTarefa";
-import TiposLista from "./components/TiposLista";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -36,18 +33,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <header>
-          <div>
-            <nav className="bg-cyan-800 p-4">
-              <h1 className="text-center font-bold ">To-Do List</h1>
-            </nav>
-          </div>
-        </header>
-        <main className="pt-14 container mx-auto">
-          <div>
-            <TiposLista />
-          </div>
-        </main>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -57,7 +42,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div>
+      <nav className="bg-cyan-800 p-4">
+        <h1 className="text-center font-bold ">To-Do List</h1>
+      </nav>
+      <Outlet />
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

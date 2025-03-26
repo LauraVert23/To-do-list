@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import { useLocalStorage } from "usehooks-ts";
 import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
+import EditarTarefa from "./EditarTarefa";
 
 interface Props {
   data: ITarefaStorage;
@@ -12,21 +13,25 @@ function CardTarefa({ data, index }: Props) {
   const [botaoExcluir, setBotaoExcluir] = useState(false);
   const [botaoEditar, setBotaoEditar] = useState(false);
   const [tarefas, setTarefas] = useLocalStorage<Props[]>("tarefas", []);
-
+  const [mostrarEditar, setMostrarEditar] = useState(false);
   const excluirTarefa = (index: number) => {
     const novasTarefas = tarefas.filter((atual, i) => i !== index);
     setTarefas(novasTarefas);
   };
 
-  const editarTarefa = (index: number) => {};
-
   const [concluida, setConcluida] = useState(false);
+
   const estado = (index: number) => {
-    setConcluida(!concluida);
     const novasTarefas = tarefas.map((tarefa, i) =>
       i === index ? { ...tarefa, estado: !concluida } : tarefa
     );
     setTarefas(novasTarefas);
+    setConcluida(!concluida);
+  };
+
+  const setEditarExcluir = () => {
+    setBotaoExcluir(!botaoExcluir);
+    setBotaoEditar(!botaoEditar);
   };
 
   return (
@@ -38,8 +43,7 @@ function CardTarefa({ data, index }: Props) {
 
             <HiDotsVertical
               onClick={() => {
-                setBotaoExcluir(!botaoExcluir);
-                setBotaoEditar(!botaoEditar);
+                setEditarExcluir();
               }}
               className="inline-block ml-2 cursor-pointer"
             />
@@ -47,7 +51,10 @@ function CardTarefa({ data, index }: Props) {
           {botaoEditar && (
             <button
               className="bg-cyan-700 items-center text-red-200 rounded cursor-pointer p-1 w-[60px]"
-              onClick={() => editarTarefa(index)}
+              onClick={() => {
+                setMostrarEditar(!mostrarEditar);
+                setEditarExcluir();
+              }}
             >
               Editar
             </button>
@@ -55,7 +62,10 @@ function CardTarefa({ data, index }: Props) {
           {botaoExcluir && (
             <button
               className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-1 w-[60px] "
-              onClick={() => excluirTarefa(index)}
+              onClick={() => {
+                excluirTarefa(index);
+                setEditarExcluir();
+              }}
             >
               Excluir
             </button>
@@ -72,6 +82,8 @@ function CardTarefa({ data, index }: Props) {
         ></input>
         <div>{concluida ? "Concluída" : ""}</div>
       </div>
+
+      {mostrarEditar && <EditarTarefa data={data} index={index} />}
     </div>
   );
 }
