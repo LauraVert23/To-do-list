@@ -11,11 +11,13 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div>
-      <div className="pt-7 container mx-auto">
+    <div className="flex justify-center pt-7">
+      <div>
         <TiposLista />
       </div>
-      <ContadorTarefas />
+      <div className="box-border ">
+        <ContadorTarefas />
+      </div>
     </div>
   );
 }

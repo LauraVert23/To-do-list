@@ -1,9 +1,24 @@
 import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 import CardTarefa from "./CardTarefa";
 import { useLocalStorage } from "usehooks-ts";
+import { useState, useEffect } from "react";
 
 function ListaTarefas() {
-  const [tarefas] = useLocalStorage<ITarefaStorage[]>("tarefas", []);
+  const [tarefas, setTarefas] = useState<ITarefaStorage[]>([]); // Estado inicial vazio
+  const [isClient, setIsClient] = useState(false); // Verifica se está no cliente
+
+  useEffect(() => {
+    setIsClient(true); // Marca que estamos no cliente
+  }, []);
+
+  const [storedTarefas] = useLocalStorage<ITarefaStorage[]>("tarefas", []);
+
+  useEffect(() => {
+    if (isClient) {
+      setTarefas(storedTarefas); // Atualiza o estado com os dados do localStorage
+    }
+  }, [isClient, storedTarefas]);
+
   const tarefasEmAndamento = tarefas.filter((tarefa) => !tarefa.estado);
   const tarefasConcluidas = tarefas.filter((tarefa) => tarefa.estado);
   return (

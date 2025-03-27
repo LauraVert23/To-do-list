@@ -23,7 +23,7 @@ function AdicionarTarefa() {
   };
 
   return (
-    <div className="ml-4 w-[400px]  bg-cyan-800 p-4 rounded">
+    <div className="ml-4 w-[350px]  bg-cyan-800 p-4 rounded">
       <form>
         <div className="flex gap-2 flex-col w-[300px] ">
           <input

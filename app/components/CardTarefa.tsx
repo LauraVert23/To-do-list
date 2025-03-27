@@ -19,7 +19,7 @@ function CardTarefa({ data, index }: Props) {
     setTarefas(novasTarefas);
   };
 
-  const [concluida, setConcluida] = useState(false);
+  const [concluida, setConcluida] = useState(data.estado);
 
   const estado = (index: number) => {
     const novasTarefas = tarefas.map((tarefa, i) =>
@@ -79,11 +79,13 @@ function CardTarefa({ data, index }: Props) {
           onChange={() => estado(index)}
           className=""
           type="checkbox"
+          checked={concluida}
         ></input>
         <div>{concluida ? "Concluída" : ""}</div>
       </div>
-
-      {mostrarEditar && <EditarTarefa data={data} index={index} />}
+      <div className="flex">
+        {mostrarEditar && <EditarTarefa data={data} index={index} />}
+      </div>
     </div>
   );
 }

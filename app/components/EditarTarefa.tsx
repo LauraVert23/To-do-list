@@ -21,40 +21,42 @@ function EditarTarefa({ data, index }: Props) {
     setTarefas(novasTarefas);
   };
   return (
-    <div className="ml-4 w-[400px]  bg-cyan-800 p-4 rounded">
+    <div className="ml-4 w-[250px]  bg-cyan-700 p-4 rounded">
       <form>
-        <div className="flex gap-2 flex-col w-[300px] ">
+        <div className="flex gap-2 flex-col w-[200px] ">
           <input
             type="text"
-            className="bg-cyan-700 p-2 rounded"
+            className="bg-cyan-600 p-2 rounded"
             placeholder="Nome da tarefa"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
             type="text"
-            className="bg-cyan-700 p-2 rounded w-[300px]"
+            className="bg-cyan-600 p-2 rounded w-[200px]"
             placeholder="Descrição da tarefa"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-cyan-700 text-black p-2 rounded
+        <div className="flex gap-3">
+          <button
+            type="submit"
+            className="bg-cyan-600 text-black p-1.5 rounded
         cursor-pointer mt-5 flex gap-2"
-          onClick={() => editar()}
-        >
-          Salvar
-        </button>
-        <button
-          type="submit"
-          className="bg-cyan-700 text-black p-2 rounded
+            onClick={() => editar()}
+          >
+            Salvar
+          </button>
+          <button
+            type="submit"
+            className="bg-cyan-600 text-black p-1.5 rounded
         cursor-pointer mt-5 flex gap-2"
-          onClick={() => setMostrarEditar(!mostrarEditar)}
-        >
-          Cancelar
-        </button>
+            onClick={() => setMostrarEditar(!mostrarEditar)}
+          >
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );
