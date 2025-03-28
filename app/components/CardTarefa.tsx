@@ -37,18 +37,14 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
     >
       <div className="flex-grow">
         <div className="flex gap-3">
-          <h2 className="text-lg font-bold text-cyan-700 dark:text-white">
+          <h2 className="text-lg font-bold text-cyan-700 dark:text-white ">
             {data.title}
-
             <HiDotsVertical
+              className="inline-block cursor-pointer justify-between"
               onClick={() => {
                 setEditarExcluir();
               }}
-              className="inline-block ml-2 cursor-pointer"
             />
-          </h2>
-          <h2 className="text-lg font-bold text-cyan-700 dark:text-white">
-            {data.id}
           </h2>
           {botaoEditar && (
             <button
@@ -73,18 +69,31 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
             </button>
           )}
         </div>
-        <p className="text-gray-600 dark:text-gray-300">{data.description}</p>
+        <p className="mt-5 text-gray-600 dark:text-gray-300">
+          {data.description}
+        </p>
       </div>
 
       <div className=" flex gap-2.5 ">
         <input
           onChange={() => estado(data.id)}
-          className=""
+          className="cursor-pointer accent-pink-500"
           type="checkbox"
           checked={data.estado}
         ></input>
         <div>{data.estado ? "Concluída" : ""}</div>
+
+        <div className="scheme-light ">
+          <input
+            type="date"
+            value={
+              data.data ? new Date(data.data).toISOString().split("T")[0] : ""
+            }
+            readOnly
+          />
+        </div>
       </div>
+
       <div className="flex">
         {mostrarEditar && <EditarTarefa data={data} />}
       </div>

@@ -1,6 +1,12 @@
 import TiposLista from "~/components/TiposLista";
 import type { Route } from "./+types/home";
 import ContadorTarefas from "~/components/ContadorTarefas";
+import favicon from "../../public/favicon.ico";
+import type { LinksFunction } from "@remix-run/node";
+
+export const links: LinksFunction = () => [
+  { rel: "icon", type: "image/x-icon", href: favicon },
+];
 
 export function meta({}: Route.MetaArgs) {
   return [

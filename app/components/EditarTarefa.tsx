@@ -10,10 +10,13 @@ function EditarTarefa({ data }: { data: ITarefaStorage }) {
   const [mostrarEditar, setMostrarEditar] = useState(true);
   const [title, setTitle] = useState(data.title);
   const [description, setDescription] = useState(data.description);
+  const [dataH, setDataH] = useState("");
 
   const editar = () => {
     const novasTarefas = tarefas.map((tarefa) =>
-      tarefa.id === data.id ? { ...tarefa, title, description } : tarefa
+      tarefa.id === data.id
+        ? { ...tarefa, title, description, data: new Date(dataH).toISOString() }
+        : tarefa
     );
     setTarefas(novasTarefas);
   };
@@ -35,6 +38,18 @@ function EditarTarefa({ data }: { data: ITarefaStorage }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <div className="scheme-light mt-7">
+            <input
+              type="date"
+              value={
+                dataH ||
+                (data.data
+                  ? new Date(data.data).toISOString().split("T")[0]
+                  : "")
+              }
+              onChange={(e) => setDataH(e.target.value)}
+            />
+          </div>
         </div>
         <div className="flex gap-3">
           <button

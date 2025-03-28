@@ -26,7 +26,22 @@ function TiposLista() {
   const tarefasConcluidas = tarefas.filter((tarefa) => tarefa.estado);
 
   return (
-    <div className="flex gap-10 justify-center">
+    <div className="flex gap-8 justify-center">
+      {/* <div className="w-[350px] box-content  bg-cyan-900 shadow-md rounded-lg">
+        <div className="ml-5 mt-3 flex justify-between mr-3">
+          <h1 className="font-extrabold">Todas</h1>
+          <div
+            className="cursor-pointer"
+            onClick={() => setAdicionaTarefa(!adicionaTarefa)}
+          >
+            <PiPlusLight />
+          </div>
+        </div>
+        <div className=" overflow-x-hidden h-150 mr-1">
+          <ListaTarefas tarefas={tarefas} />
+        </div>
+      </div> */}
+
       <div className="w-[350px] box-content  bg-cyan-900 shadow-md rounded-lg">
         <div className="ml-5 mt-3 flex justify-between mr-3">
           <h1 className="font-extrabold">Pendentes</h1>

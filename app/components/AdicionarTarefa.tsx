@@ -5,6 +5,7 @@ import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 function AdicionarTarefa() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [data, setData] = useState("");
   const [tarefas, setTarefas] = useLocalStorage<ITarefaStorage[]>(
     "tarefas",
     []
@@ -16,10 +17,12 @@ function AdicionarTarefa() {
       title,
       description,
       estado: false,
+      data,
     };
     setTarefas([...tarefas, novaTarefa]);
     setTitle("");
     setDescription("");
+    setData("");
   };
 
   return (
@@ -41,14 +44,24 @@ function AdicionarTarefa() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-cyan-600 text-black p-2 rounded
+
+        <div className="flex justify-between">
+          <button
+            type="submit"
+            className="bg-cyan-600 text-black p-2 rounded
         cursor-pointer mt-5 flex  hover:scale-110 duration-200 ease-in"
-          onClick={() => adiciona()}
-        >
-          Adicionar
-        </button>
+            onClick={() => adiciona()}
+          >
+            Adicionar
+          </button>
+          <div className="scheme-light mt-7">
+            <input
+              type="date"
+              value={data}
+              onChange={(e) => setData(e.target.value)}
+            />
+          </div>
+        </div>
       </form>
     </div>
   );

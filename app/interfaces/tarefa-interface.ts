@@ -3,4 +3,5 @@ export interface ITarefaStorage {
     title:string;
     description?:string;
     estado:boolean;
+    data:string;
 };
