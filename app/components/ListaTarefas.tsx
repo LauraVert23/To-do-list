@@ -1,15 +1,12 @@
 import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 import CardTarefa from "./CardTarefa";
 
-interface Props {
-  tarefas: ITarefaStorage[];
-}
-function ListaTarefas({ tarefas }: Props) {
+function ListaTarefas({ tarefas }: { tarefas: ITarefaStorage[] }) {
   return (
-    <div className="flex justify-between h-150">
-      <div className="p-4 justify-center overflow-auto">
-        {tarefas.map((tarefa, index) => (
-          <CardTarefa key={index} data={tarefa} index={index}></CardTarefa>
+    <div className="flex justify-between ">
+      <div className="p-4 justify-center flex flex-col gap-3">
+        {tarefas.map((tarefa) => (
+          <CardTarefa key={tarefa.id} data={tarefa}></CardTarefa>
         ))}
       </div>
     </div>

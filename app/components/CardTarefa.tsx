@@ -4,29 +4,25 @@ import { useLocalStorage } from "usehooks-ts";
 import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 import EditarTarefa from "./EditarTarefa";
 
-interface Props {
-  data: ITarefaStorage;
-  index: number;
-}
-
-function CardTarefa({ data, index }: Props) {
+function CardTarefa({ data }: { data: ITarefaStorage }) {
   const [botaoExcluir, setBotaoExcluir] = useState(false);
   const [botaoEditar, setBotaoEditar] = useState(false);
-  const [tarefas, setTarefas] = useLocalStorage<Props[]>("tarefas", []);
+  const [tarefas, setTarefas] = useLocalStorage<ITarefaStorage[]>(
+    "tarefas",
+    []
+  );
   const [mostrarEditar, setMostrarEditar] = useState(false);
-  const excluirTarefa = (index: number) => {
-    const novasTarefas = tarefas.filter((atual, i) => i !== index);
+
+  const excluirTarefa = (id: number) => {
+    const novasTarefas = tarefas.filter((tarefa) => tarefa.id !== id);
     setTarefas(novasTarefas);
   };
 
-  const [concluida, setConcluida] = useState(data.estado);
-
-  const estado = (index: number) => {
+  const estado = (id: number) => {
     const novasTarefas = tarefas.map((tarefa, i) =>
-      i === index ? { ...tarefa, estado: !concluida } : tarefa
+      tarefa.id === id ? { ...tarefa, estado: !tarefa.estado } : tarefa
     );
     setTarefas(novasTarefas);
-    setConcluida(!concluida);
   };
 
   const setEditarExcluir = () => {
@@ -51,6 +47,9 @@ function CardTarefa({ data, index }: Props) {
               className="inline-block ml-2 cursor-pointer"
             />
           </h2>
+          <h2 className="text-lg font-bold text-cyan-700 dark:text-white">
+            {data.id}
+          </h2>
           {botaoEditar && (
             <button
               className="bg-cyan-700 items-center text-red-200 rounded cursor-pointer p-1 w-[60px]"
@@ -66,7 +65,7 @@ function CardTarefa({ data, index }: Props) {
             <button
               className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-1 w-[60px] "
               onClick={() => {
-                excluirTarefa(index);
+                excluirTarefa(data.id);
                 setEditarExcluir();
               }}
             >
@@ -77,17 +76,17 @@ function CardTarefa({ data, index }: Props) {
         <p className="text-gray-600 dark:text-gray-300">{data.description}</p>
       </div>
 
-      <div className=" flex gap-2.5">
+      <div className=" flex gap-2.5 ">
         <input
-          onChange={() => estado(index)}
+          onChange={() => estado(data.id)}
           className=""
           type="checkbox"
-          checked={concluida}
+          checked={data.estado}
         ></input>
-        <div>{concluida ? "Concluída" : ""}</div>
+        <div>{data.estado ? "Concluída" : ""}</div>
       </div>
       <div className="flex">
-        {mostrarEditar && <EditarTarefa data={data} index={index} />}
+        {mostrarEditar && <EditarTarefa data={data} />}
       </div>
     </div>
   );

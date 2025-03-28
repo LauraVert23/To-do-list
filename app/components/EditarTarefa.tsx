@@ -1,11 +1,8 @@
 import { useLocalStorage } from "usehooks-ts";
 import type { ITarefaStorage } from "~/interfaces/tarefa-interface";
 import { useState } from "react";
-interface Props {
-  data: ITarefaStorage;
-  index: number;
-}
-function EditarTarefa({ data, index }: Props) {
+
+function EditarTarefa({ data }: { data: ITarefaStorage }) {
   const [tarefas, setTarefas] = useLocalStorage<ITarefaStorage[]>(
     "tarefas",
     []

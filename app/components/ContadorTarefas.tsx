@@ -18,15 +18,20 @@ function ContadorTarefas() {
   });
 
   return (
-    <div className="p-2  flex-col bg-cyan-800 rounded-lg shadow-md ml-10 w-[220px]">
-      <div className="flex gap-3 ml-2 justify-between">
+    <div className="p-2  flex-col bg-cyan-800 rounded-lg shadow-md ml-10 w-[220px] ">
+      <div className="flex gap-3 ml-2 justify-between ">
         <h1>Concluídas</h1>
-        <p className="mr-5 text-gray-600 dark:text-gray-300">
-          {contConcluidas}
-        </p>
+        <div className="flex">
+          <p className="mr-3 text-gray-600 dark:text-gray-300">
+            {contConcluidas}
+          </p>
+          <span className="relative flex size-2 mt-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-500 opacity-100"></span>
+            <span className="relative inline-flex size-2 rounded-full bg-sky-400"></span>
+          </span>
+        </div>
       </div>
-
-      <div className="flex  gap-3 ml-2 justify-between">
+      <div className="flex  gap-3 ml-2 justify-between ">
         <h1>Pendentes</h1>
         <p className="mr-5 text-gray-600 dark:text-gray-300">
           {contEmAndamento}

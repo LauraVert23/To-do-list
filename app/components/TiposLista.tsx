@@ -27,7 +27,7 @@ function TiposLista() {
 
   return (
     <div className="flex gap-10 justify-center">
-      <div className="w-[350px] min-h-[350px] flex box-content flex-col bg-cyan-900 shadow-md rounded-lg">
+      <div className="w-[350px] box-content  bg-cyan-900 shadow-md rounded-lg">
         <div className="ml-5 mt-3 flex justify-between mr-3">
           <h1 className="font-extrabold">Pendentes</h1>
           <div
@@ -37,17 +37,19 @@ function TiposLista() {
             <PiPlusLight />
           </div>
         </div>
-        <ListaTarefas tarefas={tarefas} />
+        <div className=" overflow-x-hidden h-150 mr-1">
+          <ListaTarefas tarefas={tarefasEmAndamento} />
+        </div>
       </div>
       <div>{adicionaTarefa && <AdicionarTarefa />}</div>
-      {/* {
+      {
         <div className="w-[350px] min-h-[350px] flex box-content flex-col  bg-cyan-900 shadow-md rounded-lg">
           <div className="ml-5 mt-3 flex  mr-3">
             <h1 className="font-extrabold">Concluídas</h1>
           </div>
           <ListaTarefas tarefas={tarefasConcluidas} />
         </div>
-      } */}
+      }
     </div>
   );
 }

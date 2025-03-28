@@ -12,7 +12,7 @@ function AdicionarTarefa() {
 
   const adiciona = () => {
     const novaTarefa: ITarefaStorage = {
-      id: tarefas.length > 0 ? tarefas[tarefas.length - 1].id + 1 : 1,
+      id: tarefas.length > 0 ? tarefas[tarefas.length - 1].id + 1 : 0,
       title,
       description,
       estado: false,
@@ -44,7 +44,7 @@ function AdicionarTarefa() {
         <button
           type="submit"
           className="bg-cyan-600 text-black p-2 rounded
-        cursor-pointer mt-5 flex gap-2 hover:scale-110 duration-200 ease-in"
+        cursor-pointer mt-5 flex  hover:scale-110 duration-200 ease-in"
           onClick={() => adiciona()}
         >
           Adicionar
