@@ -18,7 +18,7 @@ function TiposLista() {
   }
 
   return (
-    <div className="flex gap-8 justify-center">
+    <div className="flex gap-8 justify-center ">
       <div className="w-[350px] overflow-x-hidden h-[calc(100vh-6rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
         <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
           <h1 className="font-extrabold">Pendentes</h1>
