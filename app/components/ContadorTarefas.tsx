@@ -15,7 +15,7 @@ function ContadorTarefas() {
     ).length;
     setContEmAndamento(emAndamento);
     setTotal(concluidas + emAndamento);
-  });
+  }, [tarefas]);
 
   return (
     <div className="p-2  flex-col bg-cyan-800 rounded-lg shadow-md ml-10 w-[220px] ">
