@@ -18,7 +18,7 @@ function ContadorTarefas() {
   }, [tarefas]);
 
   return (
-    <div className="p-2  flex-col bg-cyan-800 rounded-lg shadow-md ml-10 w-[220px] ">
+    <div className="p-2 flex-col justify-center bg-cyan-800 rounded-lg shadow-md w-[180px] lg:w-[220px] ">
       <div className="flex gap-3 ml-2 justify-between ">
         <h1>Concluídas</h1>
         <div className="flex">

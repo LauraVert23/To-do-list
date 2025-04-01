@@ -32,7 +32,7 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
 
   return (
     <div
-      className="w-[250px] min-h-[150px] md:w-[300px] md:min-h-[200px] dark:bg-cyan-800 shadow-md rounded-lg p-4 flex flex-col 
+      className="w-[230px] min-h-[150px] lg:w-[300px] lg:min-h-[200px] dark:bg-cyan-800 shadow-md rounded-lg p-4 flex flex-col 
       justify-between hover:scale-105 duration-200 ease-in"
     >
       <div className="flex-grow">

@@ -43,7 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div>
+    <div className="">
       <nav className="bg-cyan-900 p-4">
         <h1 className="text-center font-bold ">To-Do List</h1>
       </nav>

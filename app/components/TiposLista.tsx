@@ -18,8 +18,8 @@ function TiposLista() {
   }
 
   return (
-    <div className="flex gap-8 justify-center ">
-      <div className="w-[350px] overflow-x-hidden h-[calc(100vh-6rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
+    <div className="flex flex-col md:flex-row gap-3 lg:gap-8 justify-center ">
+      <div className="lg:w-[350px] w-[270px] md:overflow-x-hidden md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
         <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
           <h1 className="font-extrabold">Pendentes</h1>
           <div
@@ -37,8 +37,8 @@ function TiposLista() {
       </div>
       <div>{adicionaTarefa && <AdicionarTarefa />}</div>
       {
-        <div className="w-[350px] overflow-x-hidden h-[calc(100vh-6rem)] box-content   bg-cyan-900 shadow-md rounded-lg">
-          <div className="ml-5 mt-3 flex justify-between  mr-3">
+        <div className="lg:w-[350px] w-[270px] md:overflow-x-hidden  md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
+          <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
             <h1 className="font-extrabold">Concluídas</h1>
           </div>
           <div className=" mr-1">
