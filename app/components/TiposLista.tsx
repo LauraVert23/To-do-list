@@ -29,13 +29,16 @@ function TiposLista() {
             <PiPlusLight />
           </div>
         </div>
-        <div className=" mr-1">
+        <div className="flex justify-center">
+          {adicionaTarefa && <AdicionarTarefa />}
+        </div>
+        <div className="mr-1">
           <ListaTarefas
             tarefas={storedTarefas.filter((tarefa) => !tarefa.estado)}
           />
         </div>
       </div>
-      <div>{adicionaTarefa && <AdicionarTarefa />}</div>
+
       {
         <div className="lg:w-[350px] w-[270px] md:overflow-x-hidden  md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
           <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">

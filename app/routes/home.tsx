@@ -30,7 +30,7 @@ export default function Home() {
         <div className="flex justify-center">
           <TiposLista />
         </div>
-        <div className="lg:ml-10 ml-4">
+        <div className="lg:ml-8 ml-4">
           <ContadorTarefas />
         </div>
       </div>

@@ -60,7 +60,7 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
             )}
             {botaoExcluir && (
               <button
-                className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-0.5 w-[60px] h-[25px] lg:h-[40px] "
+                className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-0.5 w-[60px] h-[25px] lg:h-[40px]"
                 onClick={() => {
                   excluirTarefa(data.id);
                   setEditarExcluir();
@@ -71,7 +71,7 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
             )}
           </div>
         </div>
-        <p className="mt-5 text-gray-600 dark:text-gray-300">
+        <p className="lg:mt-5 mt-2 text-gray-600 dark:text-gray-300">
           {data.description}
         </p>
       </div>
