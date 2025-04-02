@@ -49,7 +49,7 @@ function AdicionarTarefa() {
           <button
             type="submit"
             className="bg-cyan-600 text-black p-1.5 rounded
-        cursor-pointer mt-5 flex  hover:scale-110 duration-200 ease-in"
+        cursor-pointer mt-5 flex  hover:scale-105 duration-200 ease-in"
             onClick={() => adiciona()}
           >
             Adicionar

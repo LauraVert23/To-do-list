@@ -36,7 +36,7 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
       justify-between hover:scale-105 duration-200 ease-in"
     >
       <div className="flex-grow">
-        <div className="flex gap-3">
+        <div className="flex gap-1 flex-col">
           <h2 className="text-lg font-bold text-cyan-700 dark:text-white ">
             {data.title}
             <HiDotsVertical
@@ -46,28 +46,30 @@ function CardTarefa({ data }: { data: ITarefaStorage }) {
               }}
             />
           </h2>
-          {botaoEditar && (
-            <button
-              className="bg-cyan-700 items-center text-red-200 rounded cursor-pointer p-1 w-[60px]"
-              onClick={() => {
-                setMostrarEditar(!mostrarEditar);
-                setEditarExcluir();
-              }}
-            >
-              Editar
-            </button>
-          )}
-          {botaoExcluir && (
-            <button
-              className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-1 w-[60px] "
-              onClick={() => {
-                excluirTarefa(data.id);
-                setEditarExcluir();
-              }}
-            >
-              Excluir
-            </button>
-          )}
+          <div className="flex lg:gap-3 gap-1">
+            {botaoEditar && (
+              <button
+                className="bg-cyan-700 items-center text-red-200 rounded cursor-pointer p-0.5 w-[60px] h-[25px] lg:h-[40px]"
+                onClick={() => {
+                  setMostrarEditar(!mostrarEditar);
+                  setEditarExcluir();
+                }}
+              >
+                Editar
+              </button>
+            )}
+            {botaoExcluir && (
+              <button
+                className="bg-cyan-700 items-center text-red-300 rounded cursor-pointer p-0.5 w-[60px] h-[25px] lg:h-[40px] "
+                onClick={() => {
+                  excluirTarefa(data.id);
+                  setEditarExcluir();
+                }}
+              >
+                Excluir
+              </button>
+            )}
+          </div>
         </div>
         <p className="mt-5 text-gray-600 dark:text-gray-300">
           {data.description}
