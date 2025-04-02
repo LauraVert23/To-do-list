@@ -15,7 +15,7 @@ function EditarTarefa({ data }: { data: ITarefaStorage }) {
   const editar = () => {
     const novasTarefas = tarefas.map((tarefa) =>
       tarefa.id === data.id
-        ? { ...tarefa, title, description, data: new Date(dataH).toISOString() }
+        ? { ...tarefa, title, description, data: dataH || tarefa.data }
         : tarefa
     );
     setTarefas(novasTarefas);
@@ -64,7 +64,7 @@ function EditarTarefa({ data }: { data: ITarefaStorage }) {
             type="submit"
             className="bg-cyan-600 text-black p-1 rounded h-[30px] lg:p-1.5 lg:h-[40px] lg:mt-2
         cursor-pointer mt-5 flex gap-2"
-            onClick={() => setMostrarEditar(!mostrarEditar)}
+            onClick={() => setMostrarEditar(false)}
           >
             Cancelar
           </button>
