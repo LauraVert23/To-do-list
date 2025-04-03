@@ -27,7 +27,11 @@ function AdicionarTarefa() {
 
   return (
     <div className="mt-1 lg:w-[300px] w-[230px] bg-cyan-800 p-4 rounded lg:mr-3 lg:shadow-xl shadow">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className="flex gap-2 flex-col lg:w-[250px] w-[180px] ">
           <input
             type="text"
