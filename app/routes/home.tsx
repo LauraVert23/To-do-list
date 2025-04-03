@@ -18,15 +18,15 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <div>
-      <div className="md:hidden flex flex-col justify-center pt-5 gap-5 ">
+      <div className="sm:hidden flex flex-col justify-center pt-4 gap-4 ">
         <div className="flex justify-center">
           <ContadorTarefas />
         </div>
-        <div className="flex justify-center pb-20 ">
+        <div className="flex justify-center ">
           <TiposLista />
         </div>
       </div>
-      <div className="hidden md:flex md:flex-row justify-center pt-7">
+      <div className="hidden sm:flex sm:flex-row justify-center pt-7">
         <div className="flex justify-center">
           <TiposLista />
         </div>

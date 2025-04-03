@@ -19,8 +19,8 @@ function TiposLista() {
 
   return (
     <div className="flex flex-col md:flex-row gap-3 lg:gap-8 justify-center ">
-      <div className="lg:w-[350px] w-[270px] md:overflow-x-hidden md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
-        <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
+      <div className="lg:w-[350px] w-[270px] overflow-x-hidden h-[calc(55vh-9rem)]  sm:h-[calc(55vh-6rem)] md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
+        <div className="lg:mt-3 mt-1 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
           <h1 className="font-extrabold">Pendentes</h1>
           <div
             className="cursor-pointer"
@@ -40,8 +40,8 @@ function TiposLista() {
       </div>
 
       {
-        <div className="lg:w-[350px] w-[270px] md:overflow-x-hidden  md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
-          <div className="mt-3 flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
+        <div className="lg:w-[350px] w-[270px]  overflow-x-hidden h-[calc(50vh-8rem)] sm:h-[calc(55vh-6rem)] md:h-[calc(100vh-7rem)]  box-content  bg-cyan-900 shadow-md rounded-lg">
+          <div className="lg:mt-3 mt-1  flex justify-between items-center sticky top-0 bg-cyan-900 z-20 w-full px-4 h-8">
             <h1 className="font-extrabold">Concluídas</h1>
           </div>
           <div className=" mr-1">
